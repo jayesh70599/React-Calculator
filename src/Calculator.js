@@ -13,7 +13,7 @@ function Calculator() {
             } else if (n === "C") {
                 setValue('');
             } else if (n === 'del') {
-                setValue(value.toString().slice(0, -1));
+                setValue(value.slice(0, -1));
             } else {
                 setValue(value + n);
             }
