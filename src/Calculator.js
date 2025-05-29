@@ -25,6 +25,12 @@ function Calculator() {
                         return;
                     }
                 }
+                if(value === ""){
+                    if(n === '00'){
+                        return;
+                    }
+                    
+                }
                 setValue(value + n);
             }
         } catch (error) {
