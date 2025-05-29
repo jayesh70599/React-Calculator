@@ -9,12 +9,22 @@ function Calculator() {
     function handleClick(n){
         try {
             if (n === '=') {
-                setValue(eval(value));
+                setValue(eval(value).toString());
             } else if (n === "C") {
                 setValue('');
             } else if (n === 'del') {
                 setValue(value.slice(0, -1));
             } else {
+                if(n === '.'){
+                    if(value.includes('.')){
+                        return;
+                    }
+                }
+                if(value === '0'){
+                    if(n === '0'){
+                        return;
+                    }
+                }
                 setValue(value + n);
             }
         } catch (error) {
@@ -31,8 +41,8 @@ function Calculator() {
       {/* <div >{}</div> */}
       <input className="display" value={ value} type='text' placeholder='0'/>
       <div className="buttons">
-        <button onClick={() => handleClick('C')}>C</button>
-        <button onClick={() => handleClick('+/-')}>+/-</button>
+        <button onClick={() => handleClick('C')} className='clear'>C</button>
+        <button onClick={() => handleClick('del')}>del</button>
         <button onClick={() => handleClick('%')}>%</button>
         <button onClick={() => handleClick('/')}>/</button>
 
@@ -51,7 +61,7 @@ function Calculator() {
         <button onClick={() => handleClick('3')}>3</button>
         <button onClick={() => handleClick('+')}>+</button>
 
-        <button onClick={() => handleClick('del')}>del</button>
+        <button onClick={() => handleClick('00')}>00</button>
         <button onClick={() => handleClick('0')}>0</button>
         <button onClick={() => handleClick('.')}>.</button>
         <button onClick={() => handleClick('=')}>=</button>
